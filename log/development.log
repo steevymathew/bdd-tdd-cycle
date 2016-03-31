@@ -26,3 +26,7 @@ Connecting to database specified by database.yml
 Migrating to CreateMovies (20111119180638)
   [1m[35m (0.1ms)[0m  select sqlite_version(*)
   [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml

@@ -21,6 +21,14 @@ And /^I press "(.+)"$/ do |button|
     click_button(button)
 end
 
+When /^I press on "(.+)"$/ do |button| 
+    click_button(button)
+end
+
+When /^I press the "(.+)"$/ do |button| 
+    click_link(button)
+end
+
 Then /^the director of "(.+)" should be "(.+)"$/ do |name,director| 
     expect(page).to have_content("Director: "+director)
 end
@@ -53,3 +61,23 @@ Then  /^I should be on the home page$/ do
      expect(page).to have_content("All Movies")
 end
 
+When /^I check the following ratings: "(.*)"$/ do |list|
+    list.split(',').each do |item|
+      check("ratings["+item.strip+"]")
+    end
+end
+
+When /^I uncheck the following ratings: "(.*)"$/ do |list|
+    list.split(',').each do |item|
+      uncheck("ratings["+item.strip+"]")
+    end
+end
+
+Then /^I should see the movie "(.*)" before "(.*)"$/ do |e1, e2|
+  match = /#{e1}.*#{e2}/m =~ page.body
+  assert !match.nil?
+end
+
+Given /^I am on the home page$/ do
+   visit('/') 
+end

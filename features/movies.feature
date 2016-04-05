@@ -32,3 +32,22 @@ Scenario: can't find similar movies if we don't know director (sad path)
   When  I follow "Find Movies With Same Director"
   Then  I should be on the home page
   And   I should see "'Alien' has no director info"
+  
+Scenario: remove movie
+  Given I am on the details page for "Star Wars"
+  When  I press on "Delete"
+  And   I should see "Movie 'Star Wars' deleted."
+  
+Scenario: sort movies without R
+  Given I am on the home page
+  When  I check the following ratings: "PG, G, PG-13, NC-17"
+  And   I uncheck the following ratings: "R"
+  And   I press "ratings_submit"
+  Then  I should not see "Alien"
+  
+Scenario: sort movies in increasing order of title
+  Given I am on the home page
+  When  I check the following ratings: "PG, R, G, PG-13, NC-17"
+  And   I press "ratings_submit"
+  And   I press the "title_header"
+  Then  I should see the movie "Alien" before "Blade Runner"

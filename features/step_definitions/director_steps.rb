@@ -50,6 +50,6 @@ But   /^I should not see "(.+)"$/ do |content|
 end
 
 Then  /^I should be on the home page$/ do
-     visit('/')
+     expect(page).to have_content("All Movies")
 end
 
